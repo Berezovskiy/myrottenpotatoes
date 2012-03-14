@@ -7,7 +7,12 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.order("title").all
+    col = params[:col]
+    if col
+      @movies = Movie.order(col).all
+    else
+      @movies = Movie.all
+    end
   end
 
   def new
