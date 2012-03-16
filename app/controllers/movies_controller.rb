@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
     if sel_ratings
       @movies = (@movies ||= Movie).where(:rating => sel_ratings)
     end
-    @movies = Movie.all if @movies
+    @movies = Movie.all if @movies == nil
     @all_ratings = Movie.get_all_ratings
   end
 
