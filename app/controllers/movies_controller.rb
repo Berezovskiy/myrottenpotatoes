@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
     if sel_ratings
       @movies = @movies.where(:rating => sel_ratings)
     end
-    @all_ratings = Movie.select(:rating).uniq
+    @all_ratings = Movie.get_all_ratings
   end
 
   def new
