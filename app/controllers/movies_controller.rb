@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
       @movies = (@movies ||= Movie).order(col)
     end
     if !@sel_ratings.empty?
-      @movies = (@movies ||= Movie).where(:rating => sel_ratings)
+      @movies = (@movies ||= Movie).where(:rating => @sel_ratings)
     end
     @movies = Movie.all if @movies == nil
     @all_ratings = Movie.get_all_ratings
