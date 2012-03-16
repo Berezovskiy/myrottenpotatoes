@@ -8,12 +8,12 @@ class MoviesController < ApplicationController
 
   def index
     col = params[:orderby]
-    sel_ratings = params[:ratings].keys if params[:ratings]
+    @sel_ratings = params[:ratings].keys if params[:ratings]
     @movies = nil
     if col
       @movies = (@movies ||= Movie).order(col)
     end
-    if sel_ratings
+    if @sel_ratings
       @movies = (@movies ||= Movie).where(:rating => sel_ratings)
     end
     @movies = Movie.all if @movies == nil
