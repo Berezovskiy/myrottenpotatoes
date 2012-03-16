@@ -1,5 +1,5 @@
 class Movie < ActiveRecord::Base
   def self.get_all_ratings
-    self.select(:rating).uniq
+    self.find(:all, :select => "rating", :group => "rating").map(&:rating)
   end
 end
