@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
 
   def index
     col = params[:orderby]
-    sel_ratings = params[:ratings].values
+    sel_ratings = params[:ratings].values if params[:ratings]
     @movies = Movie.all
     if col
       @movies = @movies.order(col)
