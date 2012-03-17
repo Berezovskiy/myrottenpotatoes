@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
     col = params[:orderby]
     @sel_ratings = []
     @sel_ratings = params[:ratings].keys if params[:ratings]
-    
+    debugger
     if (col == nil) and (@sel_ratings.empty?) and (session[:params] != nil) 
       p = session[:params]
       session[:params] = nil
