@@ -10,6 +10,7 @@ class MoviesController < ApplicationController
     col = params[:orderby]
     @sel_ratings = []
     @sel_ratings = params[:ratings].keys if params[:ratings]
+    if !col & !@sel_ratings & session[:params] then redirect_to movies_path, session[:params]
     @movies = nil
     if col
       @movies = (@movies ||= Movie).order(col)
@@ -19,6 +20,7 @@ class MoviesController < ApplicationController
     end
     @movies = Movie.all if @movies == nil
     @all_ratings = Movie.get_all_ratings
+    session[:params] = params
   end
 
   def new
