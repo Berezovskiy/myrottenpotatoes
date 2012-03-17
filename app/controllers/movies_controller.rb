@@ -10,11 +10,9 @@ class MoviesController < ApplicationController
     col = params[:orderby]
     @sel_ratings = []
     @sel_ratings = params[:ratings].keys if params[:ratings]
-    debugger
-    if (col == nil) and (@sel_ratings.empty?) and (session[:params] != nil) 
-      p = session[:params]
-      session[:params] = nil
-      redirect_to movies_path, p.to_param 
+    debugger 
+    if (col == nil) and (@sel_ratings.empty?) and (session[:params].has_key?("orderby") or session[:params].has_key?("commit")) 
+      redirect_to par 
     end
     
     @movies = nil
