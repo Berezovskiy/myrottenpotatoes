@@ -12,7 +12,9 @@ class MoviesController < ApplicationController
     @sel_ratings = params[:ratings].keys if params[:ratings]
     
     if (col == nil) and (@sel_ratings.empty?) and (session[:params] != nil) 
-      redirect_to movies_path, :sss=>"fff" #session[:params].to_param 
+      p = session[:params]
+      session[:params] = nil
+      redirect_to movies_path, p.to_param 
     end
     
     @movies = nil
