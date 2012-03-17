@@ -7,12 +7,14 @@ class MoviesController < ApplicationController
   end
 
   def index
+  
+    if (request.query_parameters.empty?) 
+      redirect_to session[:params] 
+    end
+    
     col = params[:orderby]
     @sel_ratings = []
     @sel_ratings = params[:ratings].keys if params[:ratings]
-    if (col == nil) and (@sel_ratings.empty?) and (session[:params].has_key?("orderby") or session[:params].has_key?("commit")) 
-      redirect_to session[:params] 
-    end
     
     @movies = nil
     if col
