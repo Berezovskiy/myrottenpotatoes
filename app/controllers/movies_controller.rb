@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
 
   def index
   
-    if (request.query_parameters.empty?) 
+    if (request.query_parameters.empty? and session[:params] != nil) 
       redirect_to session[:params] 
     end
     
