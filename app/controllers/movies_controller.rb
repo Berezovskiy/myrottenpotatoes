@@ -10,9 +10,8 @@ class MoviesController < ApplicationController
     col = params[:orderby]
     @sel_ratings = []
     @sel_ratings = params[:ratings].keys if params[:ratings]
-    debugger 
     if (col == nil) and (@sel_ratings.empty?) and (session[:params].has_key?("orderby") or session[:params].has_key?("commit")) 
-      redirect_to par 
+      redirect_to session[:params] 
     end
     
     @movies = nil
