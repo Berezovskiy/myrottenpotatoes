@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
     @sel_ratings = []
     @sel_ratings = params[:ratings].keys if params[:ratings]
     if (col == nil) & (@sel_ratings.empty?) & (session[:params] != nil) 
-      redirect_to movies_path(:ccc => "cool") 
+      redirect_to movies_path(), session[:params] 
     end
     @movies = nil
     if col
